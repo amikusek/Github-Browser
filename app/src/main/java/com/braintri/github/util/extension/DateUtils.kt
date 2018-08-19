@@ -7,7 +7,7 @@ const val DATE_WITH_TIME_FORMAT = "dd.MM.yyyy HH:mm"
 
 fun mapRemoteDateToLocal(date: String?): Date {
     return try {
-        val calendar = Calendar.getInstance().apply { time = SimpleDateFormat("yyyy-MM-dd'T'HH:mmZ", Locale.getDefault()).parse(date) }
+        val calendar = Calendar.getInstance().apply { time = SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.getDefault()).parse(date) }
         calendar.time
     } catch (exception: Exception) {
         Date()

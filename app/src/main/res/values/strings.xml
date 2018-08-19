@@ -4,4 +4,15 @@
     <string name="emptyState">No results</string>
     <string name="initState">Click at the magnifying icon and start typing to search repositories.</string>
     <string name="searchHint">Type query…</string>
+
+    <string name="language">Language</string>
+    <string name="stars">Stars</string>
+    <string name="watchers">Watchers</string>
+    <string name="subscribers">Subscribers</string>
+    <string name="forks">Forks</string>
+    <string name="openIssues">Open issues</string>
+    <string name="createdAt">Created at</string>
+    <string name="updatedAt">Updated at</string>
+    <string name="repoUrl">Repository address</string>
+    <string name="ownerUrl">Owner address</string>
 </resources>

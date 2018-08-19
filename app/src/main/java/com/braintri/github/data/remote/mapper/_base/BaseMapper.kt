@@ -11,4 +11,8 @@ abstract class BaseMapper<Entity, Model> {
                             mapOrReturnNull(it)?.let { add(it) }
                         }
                     }
+
+    fun mapOrThrow(model: Model?): Entity =
+            model?.let { mapOrReturnNull(it) }
+                    ?: throw IllegalStateException()
 }

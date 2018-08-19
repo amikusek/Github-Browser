@@ -52,6 +52,11 @@ class MainPresenter : BaseRxPresenter<
                                     view?.showError(it)
                                 }
                         ))
+        addSubscription(
+                view!!
+                        .onRepoListItemClicksEvents
+                        .retrySubscribe(
+                                onNext = { routing.startRepoDetailsScreen(it) }))
     }
 
     override fun createRouting() = MainRouting()
