@@ -33,9 +33,7 @@ class MainPresenter : BaseRxPresenter<
                                         view!!.showEmptyState()
                                     }
                                 },
-                                onError = {
-                                    view!!.showError(it)
-                                }))
+                                onError = { view!!.showError(it) }))
         addSubscription(
                 view!!.onLoadMoreEvents
                         .throttleFirst(200, TimeUnit.MILLISECONDS)
@@ -43,20 +41,14 @@ class MainPresenter : BaseRxPresenter<
                         .flatMapSingle { interactor.getRepos(it, view!!.currentPage) }
                         .observeOnMain()
                         .retrySubscribe(
-                                onNext =
-                                {
-                                    view?.addToList(it)
-                                },
-                                onError =
-                                {
-                                    view?.showError(it)
-                                }
-                        ))
+                                onNext = { view?.addToList(it) },
+                                onError = { view?.showError(it) }))
         addSubscription(
                 view!!
                         .onRepoListItemClicksEvents
                         .retrySubscribe(
-                                onNext = { routing.startRepoDetailsScreen(it) }))
+                                onNext = { routing.startRepoDetailsScreen(it) },
+                                onError = { it.printStackTrace() }))
     }
 
     override fun createRouting() = MainRouting()
