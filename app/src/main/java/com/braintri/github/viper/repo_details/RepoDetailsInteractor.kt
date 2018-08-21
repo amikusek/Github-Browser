@@ -12,6 +12,5 @@ class RepoDetailsInteractor : BaseRxInteractor(), RepoDetailsContract.Interactor
 
     override fun getRepoDetails(owner: String, repo: String) =
             detailsRepository
-                    .queryList(RepoDetailsRemoteSpecification(owner, repo))
-                    .map { it.first() }
+                    .query(RepoDetailsRemoteSpecification(owner, repo))
 }
