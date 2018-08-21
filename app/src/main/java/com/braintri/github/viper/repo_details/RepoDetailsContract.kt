@@ -11,8 +11,8 @@ import io.reactivex.Single
 interface RepoDetailsContract {
 
     interface View : MvpView {
-        val repoName: String?
-        val ownerName: String?
+        val repoName: String
+        val ownerName: String
         val navigationBackButtonClicks: Observable<Unit>
         val urlClicksEvents: Observable<String>
         fun setDetailsData(details: RepoDetails)

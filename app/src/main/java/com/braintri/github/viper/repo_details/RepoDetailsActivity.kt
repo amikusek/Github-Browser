@@ -24,8 +24,10 @@ class RepoDetailsActivity : ViperAiPassiveActivity<RepoDetailsContract.View>(), 
 
     private val adapter = DetailsAdapter()
 
-    override val repoName by lazy { args?.getString(REPO_NAME_ARGS) }
-    override val ownerName by lazy { args?.getString(REPO_OWNER_ARGS) }
+    override val repoName
+        get() = args?.getString(REPO_NAME_ARGS)!!
+    override val ownerName
+        get() = args?.getString(REPO_OWNER_ARGS)!!
     override val navigationBackButtonClicks
         get() = toolbar.navigationClicks()
     override val urlClicksEvents = adapter.urlClicksEvents
@@ -54,7 +56,7 @@ class RepoDetailsActivity : ViperAiPassiveActivity<RepoDetailsContract.View>(), 
     }
 
     private fun setToolbarTitle() {
-        toolbarTitle.text = repoName ?: ""
+        toolbarTitle.text = repoName
     }
 
     override fun showLoading() {

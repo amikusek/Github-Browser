@@ -17,10 +17,8 @@ class RepoDetailsPresenter : BaseRxPresenter<RepoDetailsContract.View, RepoDetai
         addSubscription(
                 loadDetailsSubject
                         .doOnNext { view!!.showLoading() }
-                        .filter { view!!.ownerName != null }
-                        .filter { view!!.repoName != null }
                         .observeOnIo()
-                        .flatMapSingle { interactor.getRepoDetails(view!!.ownerName!!, view!!.repoName!!) }
+                        .flatMapSingle { interactor.getRepoDetails(view!!.ownerName, view!!.repoName) }
                         .observeOnMain()
                         .retrySubscribe(
                                 onNext = {
