@@ -11,16 +11,18 @@ import com.braintri.github.viper.repo_details.list.delegate.OwnerItemAdapterDele
 import com.braintri.github.viper.repo_details.list.delegate.ParameterItemAdapterDelegate
 import com.braintri.github.viper.repo_details.list.delegate.UrlItemAdapterDelegate
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager
+import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
 class DetailsAdapter : BaseRecyclerAdapter<ListingItem>() {
 
-    val urlClicksEvents = PublishSubject.create<String>()
+    private val _urlClicksEvents = PublishSubject.create<String>()!!
+    val urlClicksEvents: Observable<String> = _urlClicksEvents
 
     override fun addAdapterDelegates(delegatesManager: AdapterDelegatesManager<List<ListingItem>>) {
         delegatesManager.addDelegate(OWNER_ITEM_TYPE, OwnerItemAdapterDelegate())
         delegatesManager.addDelegate(DESCRIPTION_ITEM_TYPE, DescriptionAdapterDelegate())
         delegatesManager.addDelegate(PARAMETER_ITEM_TYPE, ParameterItemAdapterDelegate())
-        delegatesManager.addDelegate(URL_ITEM_TYPE, UrlItemAdapterDelegate(urlClicksEvents))
+        delegatesManager.addDelegate(URL_ITEM_TYPE, UrlItemAdapterDelegate(_urlClicksEvents))
     }
 }

@@ -4,8 +4,8 @@ import com.braintri.github.data.remote.api.RepoDetailsApi
 import com.braintri.github.data.sync.specification._base.RemoteSpecification
 import retrofit2.Retrofit
 
-class RepoDetailsRemoteSpecification(private val owner: String,
-                                     private val name: String)
+data class RepoDetailsRemoteSpecification(private val owner: String,
+                                          private val name: String)
     : RemoteSpecification {
 
     override fun getResults(retrofit: Retrofit) =
